@@ -1,0 +1,57 @@
+body {
+  margin: 0;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background-color: #ebebeb;
+
+  #root {
+    .main_container {
+      width: 80vw;
+      height: 100vh;
+      margin: auto;
+      background-color: rgba(121, 255, 172, 0.43);
+      .toDo_container {
+        display: flex;
+        justify-content: center;
+        .toDo {
+          background-color: #fff;
+
+          width: 350px;
+          margin-top: 50px;
+          display: flex;
+          h1 {
+            margin: 0;
+            display: inline-block;
+            line-height: 41pt;
+            color: rgb(68, 68, 68);
+            border: 1px solid rgba(0, 0, 0, .1);
+            border-radius: 2px;
+            background: rgb(245, 245, 245);
+          }
+          .add_taskList {
+            color: rgb(68, 68, 68);
+            flex-grow: 1;
+            font-size: 35pt;
+            text-align: center;
+            border: 1px solid rgba(0, 0, 0, .1);
+            border-radius: 2px;
+            background: rgb(245, 245, 245) linear-gradient(#dcdcdc, #efeaea);
+            transition: all .218s ease 0s;
+            &:hover {
+              color: rgb(24, 24, 24);
+              border: 1px solid rgb(198, 198, 198);
+              background: #f7f7f7 linear-gradient(#c5c5c5, #fbefef);
+              box-shadow: 0 1px 2px rgba(0,0,0,.1);
+              cursor: pointer;
+            }
+            &:active{
+              color: rgb(51,51,51);
+              border: 1px solid rgb(204,204,204);
+              background: rgb(238,238,238) linear-gradient(rgb(238,238,238), rgb(224,224,224));
+              box-shadow: -3px 3px 13px rgba(0, 0, 0, 0.1) inset;
+            }
+          }
+        }
+      }
+    }
+  }
+}
