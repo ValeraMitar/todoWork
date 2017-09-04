@@ -1,7 +1,7 @@
 body {
   margin: 0;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  background-color: #ebebeb;
+  background-color: #d4d4d4;
 }
 body #root .main_container {
   width: 80vw;
@@ -12,6 +12,8 @@ body #root .main_container {
 body #root .main_container .toDo_container {
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 body #root .main_container .toDo_container .toDo {
   background-color: #fff;
