@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0995cbbf-e90d-4ac5-9d01-2a89622b4e9b" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/bundle.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/todoWork.iml" afterPath="$PROJECT_DIR$/.idea/todoWork.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/scripts/mainToDo/MainToDo.js" afterPath="$PROJECT_DIR$/app/scripts/mainToDo/MainToDo.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/styles/style.css" afterPath="$PROJECT_DIR$/app/styles/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/styles/style.less" afterPath="$PROJECT_DIR$/app/styles/style.less" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/.babelrc" afterPath="$PROJECT_DIR$/.babelrc" />
-    </list>
+    <list default="true" id="0995cbbf-e90d-4ac5-9d01-2a89622b4e9b" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -61,8 +52,8 @@
       <file leaf-file-name="MainToDo.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/scripts/mainToDo/MainToDo.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="418">
-              <caret line="58" column="22" lean-forward="true" selection-start-line="58" selection-start-column="22" selection-end-line="58" selection-end-column="22" />
+            <state relative-caret-position="333">
+              <caret line="53" column="35" lean-forward="true" selection-start-line="53" selection-start-column="35" selection-end-line="53" selection-end-column="35" />
               <folding>
                 <element signature="e#15#54#0" expanded="true" />
               </folding>
@@ -435,12 +426,20 @@
       <option name="presentableId" value="Default" />
       <updated>1504255785143</updated>
       <workItem from="1504255787040" duration="15941000" />
-      <workItem from="1504510402892" duration="18933000" />
+      <workItem from="1504510402892" duration="19052000" />
     </task>
+    <task id="LOCAL-00001" summary="go">
+      <created>1504533874470</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1504533874470</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="34874000" />
+    <option name="totallyTimeSpent" value="34993000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -650,8 +649,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/scripts/mainToDo/MainToDo.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="58" column="22" lean-forward="true" selection-start-line="58" selection-start-column="22" selection-end-line="58" selection-end-column="22" />
+        <state relative-caret-position="333">
+          <caret line="53" column="35" lean-forward="true" selection-start-line="53" selection-start-column="35" selection-end-line="53" selection-end-column="35" />
           <folding>
             <element signature="e#15#54#0" expanded="true" />
           </folding>
