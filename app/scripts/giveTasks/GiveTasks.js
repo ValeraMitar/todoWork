@@ -1,6 +1,7 @@
 'use strict';
 
 import React, {Component} from 'react';
+import TodoItems from '../todoItems/ToDoItems.js';
 
 class GiveTasks extends Component {
     constructor(props) {
@@ -14,7 +15,7 @@ class GiveTasks extends Component {
     addItem(event) {
         let itemArray = this.state.items;
         itemArray.push({
-            text: event.target.value,
+            text: this._inputElement.value,
             key: Date.now()
         });
         this.setState({items: itemArray});
@@ -22,21 +23,12 @@ class GiveTasks extends Component {
         event.preventDefault();
     }
 
-    onChange(event) {
-        let itemArray = this.state.items;
-        itemArray.push({
-            text: event.target.value,
-            key: Date.now()
-        });
-        this.setState({items: itemArray});
-
-    };
 
     render() {
         return (
             <div className="tasks_block">
                 <div className="add_task">
-                    <form onSubmit={this.addItem}>
+                    <form onSubmit={this.addItem.bind(this)}>
                         <input ref={(a) => this._inputElement = a}
                                placeholder="Enter New task">
                         </input>
@@ -44,14 +36,7 @@ class GiveTasks extends Component {
                     </form>
                 </div>
                 <div className="someTask">
-                    <div className="task_place">
-                        <input className="task" value={this.state.term} onChange={this.onChange}/>
-                    </div>
-                    <div className="delete" onClick={() => {
-
-                    }}>
-                        X
-                    </div>
+                    <TodoItems entr={this.state.items}/>
                 </div>
             </div>
         );
