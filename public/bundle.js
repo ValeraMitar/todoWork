@@ -22613,7 +22613,7 @@ var _react = __webpack_require__(16);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _ToDoItems = __webpack_require__(195);
+var _ToDoItems = __webpack_require__(188);
 
 var _ToDoItems2 = _interopRequireDefault(_ToDoItems);
 
@@ -22643,7 +22643,8 @@ var GiveTasks = function (_Component) {
     _createClass(GiveTasks, [{
         key: 'addItem',
         value: function addItem(event) {
-            var itemArray = this.state.items;
+            var itemArray = this.state.items,
+                someTask = document.querySelectorAll('.someTask');
             itemArray.push({
                 text: this._inputElement.value,
                 key: Date.now()
@@ -22651,6 +22652,10 @@ var GiveTasks = function (_Component) {
             this.setState({ items: itemArray });
             this._inputElement.value = '';
             event.preventDefault();
+            console.log(someTask);
+            someTask.forEach(function (block) {
+                block.style.display = 'block';
+            });
         }
     }, {
         key: 'render',
@@ -22679,7 +22684,7 @@ var GiveTasks = function (_Component) {
                 ),
                 _react2.default.createElement(
                     'div',
-                    { className: 'someTask' },
+                    null,
                     _react2.default.createElement(_ToDoItems2.default, { entr: this.state.items })
                 )
             );
@@ -22692,7 +22697,108 @@ var GiveTasks = function (_Component) {
 exports.default = GiveTasks;
 
 /***/ }),
-/* 188 */,
+/* 188 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(16);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var ToDoItems = function (_Component) {
+    _inherits(ToDoItems, _Component);
+
+    function ToDoItems(props) {
+        _classCallCheck(this, ToDoItems);
+
+        return _possibleConstructorReturn(this, (ToDoItems.__proto__ || Object.getPrototypeOf(ToDoItems)).call(this, props));
+    }
+
+    _createClass(ToDoItems, [{
+        key: 'onChange',
+        value: function onChange(event) {
+            var itemArray = this.props.entr;
+            itemArray.push({
+                text: event.target.value,
+                key: Date.now()
+            });
+            this.setState({ items: itemArray });
+        }
+    }, {
+        key: 'crossTheText',
+        value: function crossTheText(event) {
+            var li = event.target.closest('form'),
+                target = li.childNodes[0];
+            target.style.textDecoration = 'line-through';
+            event.preventDefault();
+        }
+    }, {
+        key: 'createTasks',
+        value: function createTasks(item) {
+            return _react2.default.createElement(
+                'li',
+                { key: item.key },
+                _react2.default.createElement(
+                    'form',
+                    { onSubmit: this.crossTheText.bind(this) },
+                    _react2.default.createElement('input', { className: 'task', title: item.text, value: item.text, onChange: this.onChange.bind(this) }),
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'forPseudoElement' },
+                        _react2.default.createElement(
+                            'div',
+                            { className: 'delete' },
+                            'x'
+                        ),
+                        _react2.default.createElement(
+                            'button',
+                            { className: 'done', type: 'submit' },
+                            'Done!'
+                        )
+                    )
+                )
+            );
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var todoEntries = this.props.entr,
+                listItems = todoEntries.map(this.createTasks.bind(this));
+
+            return _react2.default.createElement(
+                'div',
+                { className: 'someTask' },
+                _react2.default.createElement(
+                    'ul',
+                    { className: 'theList' },
+                    listItems
+                )
+            );
+        }
+    }]);
+
+    return ToDoItems;
+}(_react.Component);
+
+exports.default = ToDoItems;
+
+/***/ }),
 /* 189 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -22790,10 +22896,10 @@ if(false) {
 
 exports = module.exports = __webpack_require__(192)(undefined);
 // imports
-
+exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Dancing+Script:400,700|Marck+Script&subset=cyrillic,latin-ext);", ""]);
 
 // module
-exports.push([module.i, "body {\n  margin: 0;\n  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;\n  background-color: #d4d4d4;\n}\nbody #root .main_container {\n  width: 80vw;\n  height: 100vh;\n  margin: auto;\n  background-color: rgba(121, 255, 172, 0.43);\n}\nbody #root .main_container .toDo_container {\n  display: flex;\n  justify-content: center;\n  flex-direction: column;\n  align-items: center;\n}\nbody #root .main_container .toDo_container .toDo {\n  background-color: #fff;\n  width: 350px;\n  margin-top: 50px;\n  display: flex;\n}\nbody #root .main_container .toDo_container .toDo h1 {\n  margin: 0;\n  display: inline-block;\n  line-height: 41pt;\n  color: #444444;\n  border: 1px solid rgba(0, 0, 0, 0.1);\n  border-radius: 2px;\n  background: #f5f5f5;\n}\nbody #root .main_container .toDo_container .toDo .add_taskList {\n  color: #444444;\n  flex-grow: 1;\n  font-size: 35pt;\n  text-align: center;\n  border: 1px solid rgba(0, 0, 0, 0.1);\n  border-radius: 2px;\n  background: #f5f5f5 linear-gradient(#dcdcdc, #efeaea);\n  transition: all .218s ease 0s;\n}\nbody #root .main_container .toDo_container .toDo .add_taskList:hover {\n  color: #181818;\n  border: 1px solid #c6c6c6;\n  background: #f7f7f7 linear-gradient(#c5c5c5, #fbefef);\n  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);\n  cursor: pointer;\n}\nbody #root .main_container .toDo_container .toDo .add_taskList:active {\n  color: #333333;\n  border: 1px solid #cccccc;\n  background: #eeeeee linear-gradient(#eeeeee, #e0e0e0);\n  box-shadow: -3px 3px 13px rgba(0, 0, 0, 0.1) inset;\n}\n", ""]);
+exports.push([module.i, "body {\n  margin: 0;\n  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;\n  background-color: #d4d4d4;\n}\nbody #root .main_container {\n  width: 94vw;\n  height: 100vh;\n  margin: 30px auto;\n  background-color: rgba(121, 255, 172, 0.43);\n}\nbody #root .main_container .toDo_container {\n  display: flex;\n  justify-content: center;\n  flex-direction: column;\n  align-items: center;\n}\nbody #root .main_container .toDo_container .toDo {\n  background-color: #fff;\n  width: 390px;\n  margin: 50px 0 50px 0;\n  display: flex;\n}\nbody #root .main_container .toDo_container .toDo h1 {\n  margin: 0;\n  padding: 0 10px 0 10px;\n  display: inline-block;\n  line-height: 41pt;\n  color: #444444;\n  border: 1px solid rgba(156, 112, 112, 0.68);\n  border-radius: 2px;\n  background: rgba(91, 118, 218, 0.25);\n}\nbody #root .main_container .toDo_container .toDo .add_taskList {\n  color: #444444;\n  flex-grow: 1;\n  font-size: 35pt;\n  text-align: center;\n  border: 1px solid rgba(0, 0, 0, 0.1);\n  border-radius: 2px;\n  background: #f5f5f5 linear-gradient(#dcdcdc, #efeaea);\n  transition: all .218s ease 0s;\n}\nbody #root .main_container .toDo_container .toDo .add_taskList:hover {\n  color: #181818;\n  border: 1px solid #c6c6c6;\n  background: #f7f7f7 linear-gradient(#c5c5c5, #fbefef);\n  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);\n  cursor: pointer;\n}\nbody #root .main_container .toDo_container .toDo .add_taskList:active {\n  color: #333333;\n  border: 1px solid #cccccc;\n  background: #eeeeee linear-gradient(#eeeeee, #e0e0e0);\n  box-shadow: -3px 3px 13px rgba(0, 0, 0, 0.1) inset;\n}\nbody #root .main_container .toDo_container .task_container {\n  width: 100%;\n  display: flex;\n  justify-content: space-around;\n  flex-wrap: wrap;\n}\nbody #root .main_container .toDo_container .task_container .Entr_new_task_container {\n  width: 470px;\n  margin: 20px 5px 20px 5px;\n}\nbody #root .main_container .toDo_container .task_container .Entr_new_task_container button[type=submit]:hover {\n  cursor: pointer;\n}\nbody #root .main_container .toDo_container .task_container .Entr_new_task_container .tasks_block .add_task {\n  margin: 10px 0 20px 0;\n}\nbody #root .main_container .toDo_container .task_container .Entr_new_task_container .tasks_block .add_task form {\n  display: flex;\n}\nbody #root .main_container .toDo_container .task_container .Entr_new_task_container .tasks_block .add_task form input {\n  flex-grow: 1;\n  font-size: 15pt;\n  text-indent: 10pt;\n  font-style: italic;\n}\nbody #root .main_container .toDo_container .task_container .Entr_new_task_container .tasks_block .add_task form input::-webkit-input-placeholder {\n  color: #ff0705;\n  text-align: center;\n}\nbody #root .main_container .toDo_container .task_container .Entr_new_task_container .tasks_block .someTask {\n  display: none;\n  margin: 5px;\n  padding: 15px 5px 15px 22px;\n  border: 1px solid #fbfbd3;\n  background-color: lightgoldenrodyellow;\n  border-radius: 8px;\n  box-shadow: -8px 6px 11px 1px rgba(0, 0, 0, 0.1);\n}\nbody #root .main_container .toDo_container .task_container .Entr_new_task_container .tasks_block .someTask ul {\n  list-style-type: none;\n  margin: 0;\n  padding: 0;\n}\nbody #root .main_container .toDo_container .task_container .Entr_new_task_container .tasks_block .someTask ul li {\n  margin: 0 0 10px 0;\n}\nbody #root .main_container .toDo_container .task_container .Entr_new_task_container .tasks_block .someTask ul li form {\n  display: flex;\n  align-items: center;\n}\nbody #root .main_container .toDo_container .task_container .Entr_new_task_container .tasks_block .someTask ul li form input {\n  margin-right: 24px;\n  border: none;\n  border-radius: 25px;\n  flex-grow: 1;\n  font-size: 18pt;\n  text-indent: 10pt;\n  font-family: 'Marck Script', cursive;\n  overflow: auto;\n  text-overflow: ellipsis;\n  background-color: wheat;\n  box-shadow: inset -5px 2px 18px 2px rgba(0, 0, 0, 0.1);\n}\nbody #root .main_container .toDo_container .task_container .Entr_new_task_container .tasks_block .someTask ul li form input:hover {\n  cursor: pointer;\n  transform: scale(1.12, 1.12);\n}\nbody #root .main_container .toDo_container .task_container .Entr_new_task_container .tasks_block .someTask ul li form input:focus {\n  cursor: text;\n  outline: none;\n}\nbody #root .main_container .toDo_container .task_container .Entr_new_task_container .tasks_block .someTask ul li form .forPseudoElement {\n  position: relative;\n}\nbody #root .main_container .toDo_container .task_container .Entr_new_task_container .tasks_block .someTask ul li form .forPseudoElement .delete {\n  position: absolute;\n  width: 18px;\n  height: 18px;\n  left: -24px;\n  top: -3.5px;\n  display: inline-block;\n  text-align: center;\n  border: 1px solid #f95a5a;\n  border-radius: 6px;\n  color: #fff;\n  background: #f33c3b linear-gradient(#ec7c7c, #d26262);\n}\nbody #root .main_container .toDo_container .task_container .Entr_new_task_container .tasks_block .someTask ul li form .forPseudoElement .delete:hover {\n  background: linear-gradient(#e8aeae, #a22d2d);\n  cursor: pointer;\n}\nbody #root .main_container .toDo_container .task_container .Entr_new_task_container .tasks_block .someTask ul li form .forPseudoElement .delete:active {\n  background: linear-gradient(#ef6c6c, #e22929 20%, #a00c0c);\n  box-shadow: 0 -1px rgba(255, 255, 255, 0.4) inset;\n}\nbody #root .main_container .toDo_container .task_container .Entr_new_task_container .tasks_block .someTask ul li form .forPseudoElement .done {\n  box-sizing: inherit;\n  width: 40px;\n  height: 40px;\n  padding: 0;\n  border-radius: 15px;\n  text-decoration: line-through;\n  vertical-align: middle;\n  text-align: center;\n  line-height: 2.4em;\n  user-select: none;\n  color: #ffffff;\n  outline: none;\n  border: 1px solid rgba(110, 121, 128, 0.8);\n  border-top-color: rgba(0, 0, 0, 0.3);\n  background: #cedce7 linear-gradient(#cedce7, #596a72);\n  box-shadow: 0 -1px rgba(10, 21, 28, 0.9) inset, 0 1px rgba(255, 255, 255, 0.5) inset;\n}\nbody #root .main_container .toDo_container .task_container .Entr_new_task_container .tasks_block .someTask ul li form .forPseudoElement .done:hover {\n  background: linear-gradient(#d2dfea, #71828c);\n}\nbody #root .main_container .toDo_container .task_container .Entr_new_task_container .tasks_block .someTask ul li form .forPseudoElement .done:active {\n  line-height: 2.6em;\n  background: linear-gradient(#bac6cf, #c5d3de 20%, #71828c);\n  box-shadow: 0 -1px rgba(255, 255, 255, 0.4) inset;\n  color: #000000;\n}\nbody #root .main_container .toDo_container .task_container .Entr_new_task_container .tasks_block .someTask ul li form .forPseudoElement .done:focus {\n  outline: none;\n}\n", ""]);
 
 // exports
 
@@ -23333,83 +23439,6 @@ module.exports = function (css) {
 	return fixedCss;
 };
 
-
-/***/ }),
-/* 195 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(16);
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var ToDoItems = function (_Component) {
-    _inherits(ToDoItems, _Component);
-
-    function ToDoItems(props) {
-        _classCallCheck(this, ToDoItems);
-
-        return _possibleConstructorReturn(this, (ToDoItems.__proto__ || Object.getPrototypeOf(ToDoItems)).call(this, props));
-    }
-
-    _createClass(ToDoItems, [{
-        key: 'onChange',
-        value: function onChange(event) {
-            var itemArray = this.props.entr;
-            itemArray.push({
-                text: event.target.value,
-                key: Date.now()
-            });
-            this.setState({ items: itemArray });
-        }
-    }, {
-        key: 'createTasks',
-        value: function createTasks(item) {
-            return _react2.default.createElement(
-                'li',
-                { key: item.key },
-                _react2.default.createElement('input', { className: 'task', value: item.text, onChange: this.onChange.bind(this) }),
-                _react2.default.createElement(
-                    'div',
-                    { className: 'delete', onClick: function onClick() {} },
-                    'X'
-                )
-            );
-        }
-    }, {
-        key: 'render',
-        value: function render() {
-            var todoEntries = this.props.entr,
-                listItems = todoEntries.map(this.createTasks.bind(this));
-
-            return _react2.default.createElement(
-                'ul',
-                { className: 'theList' },
-                listItems
-            );
-        }
-    }]);
-
-    return ToDoItems;
-}(_react.Component);
-
-exports.default = ToDoItems;
 
 /***/ })
 /******/ ]);

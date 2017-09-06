@@ -13,7 +13,8 @@ class GiveTasks extends Component {
     }
 
     addItem(event) {
-        let itemArray = this.state.items;
+        let itemArray = this.state.items,
+            someTask = document.querySelectorAll('.someTask');
         itemArray.push({
             text: this._inputElement.value,
             key: Date.now()
@@ -21,6 +22,9 @@ class GiveTasks extends Component {
         this.setState({items: itemArray});
         this._inputElement.value = '';
         event.preventDefault();
+        console.log(someTask);
+        someTask.forEach((block) => {block.style.display = 'block';})
+
     }
 
 
@@ -35,7 +39,7 @@ class GiveTasks extends Component {
                         <button type="submit">add</button>
                     </form>
                 </div>
-                <div className="someTask">
+                <div>
                     <TodoItems entr={this.state.items}/>
                 </div>
             </div>

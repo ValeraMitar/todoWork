@@ -17,14 +17,24 @@ class ToDoItems extends Component {
 
     };
 
+    crossTheText(event) {
+        let li = event.target.closest('form'),
+            target = li.childNodes[0];
+        target.style.textDecoration = 'line-through';
+        event.preventDefault();
+    }
+
     createTasks(item) {
         return <li key={item.key}>
-            <input className="task" value={item.text} onChange={this.onChange.bind(this)}/>
-            <div className="delete" onClick={() => {
-
-            }}>
-                X
-            </div>
+            <form onSubmit={this.crossTheText.bind(this)}>
+                <input className="task" title={item.text} value={item.text} onChange={this.onChange.bind(this)}/>
+                <div className="forPseudoElement">
+                    <div className="delete">
+                        x
+                    </div>
+                    <button className="done" type="submit">Done!</button>
+                </div>
+            </form>
         </li>
     }
 
@@ -34,9 +44,11 @@ class ToDoItems extends Component {
             listItems = todoEntries.map(this.createTasks.bind(this));
 
         return (
-            <ul className="theList">
-                {listItems}
-            </ul>
+            <div className="someTask">
+                <ul className="theList">
+                    {listItems}
+                </ul>
+            </div>
         );
     }
 }
