@@ -84,6 +84,25 @@ body #root .main_container .toDo_container .task_container .Entr_new_task_contai
   color: #ff0705;
   text-align: center;
 }
+body #root .main_container .toDo_container .task_container .Entr_new_task_container .tasks_block .add_task form .del_btn {
+  width: calc(38.25px);
+  vertical-align: middle;
+  line-height: 27px;
+  border-radius: inherit;
+  display: inline-block;
+  text-align: center;
+  border: 1px solid #f95a5a;
+  color: #fff;
+  background: #f33c3b linear-gradient(#ec7c7c, #d26262);
+}
+body #root .main_container .toDo_container .task_container .Entr_new_task_container .tasks_block .add_task form .del_btn:hover {
+  background: linear-gradient(#e8aeae, #a22d2d);
+  cursor: pointer;
+}
+body #root .main_container .toDo_container .task_container .Entr_new_task_container .tasks_block .add_task form .del_btn:active {
+  background: linear-gradient(#ef6c6c, #e22929 20%, #a00c0c);
+  box-shadow: 0 -1px rgba(255, 255, 255, 0.4) inset;
+}
 body #root .main_container .toDo_container .task_container .Entr_new_task_container .tasks_block .someTask {
   display: none;
   margin: 5px;
@@ -135,10 +154,10 @@ body #root .main_container .toDo_container .task_container .Entr_new_task_contai
   height: 18px;
   left: -24px;
   top: -3.5px;
+  border-radius: 6px;
   display: inline-block;
   text-align: center;
   border: 1px solid #f95a5a;
-  border-radius: 6px;
   color: #fff;
   background: #f33c3b linear-gradient(#ec7c7c, #d26262);
 }
@@ -156,7 +175,6 @@ body #root .main_container .toDo_container .task_container .Entr_new_task_contai
   height: 40px;
   padding: 0;
   border-radius: 15px;
-  text-decoration: line-through;
   vertical-align: middle;
   text-align: center;
   line-height: 2.4em;
@@ -179,4 +197,22 @@ body #root .main_container .toDo_container .task_container .Entr_new_task_contai
 }
 body #root .main_container .toDo_container .task_container .Entr_new_task_container .tasks_block .someTask ul li form .forPseudoElement .done:focus {
   outline: none;
+}
+.delete_button {
+  display: inline-block;
+  text-align: center;
+  border: 1px solid #f95a5a;
+  color: #fff;
+  background: #f33c3b linear-gradient(#ec7c7c, #d26262);
+}
+.delete_button:hover {
+  background: linear-gradient(#e8aeae, #a22d2d);
+  cursor: pointer;
+}
+.delete_button:active {
+  background: linear-gradient(#ef6c6c, #e22929 20%, #a00c0c);
+  box-shadow: 0 -1px rgba(255, 255, 255, 0.4) inset;
+}
+.done_toggle {
+  text-decoration: line-through;
 }

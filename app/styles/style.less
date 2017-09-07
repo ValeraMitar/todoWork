@@ -82,9 +82,16 @@ body {
                     &::-webkit-input-placeholder {
                       color: #ff0705;
                       text-align: center;
-
                     }
                   }
+                  .del_btn{
+                    width: calc(16px + 22.25px);
+                    vertical-align: middle;
+                    line-height:27px;
+                    border-radius: inherit;
+                    .delete_button;
+                  }
+
                 }
               }
 
@@ -137,20 +144,8 @@ body {
                           height: 18px;
                           left: -24px;
                           top: -3.5px;
-                          display: inline-block;
-                          text-align: center;
-                          border: 1px solid #f95a5a;
                           border-radius: 6px;
-                          color: #fff;
-                          background: rgb(243, 60, 59) linear-gradient(rgb(236, 124, 124), rgb(210, 98, 98));
-                          &:hover{
-                            background: linear-gradient(#e8aeae, #a22d2d);
-                            cursor:pointer;
-                          }
-                          &:active{
-                            background: linear-gradient(#ef6c6c, #e22929 20%, #a00c0c);
-                            box-shadow: 0 -1px rgba(255,255,255,.4) inset;
-                          }
+                          .delete_button;
                         }
                         .done {
                         box-sizing: inherit;
@@ -158,7 +153,6 @@ body {
                         height: 40px;
                         padding: 0;
                         border-radius: 15px;
-                        text-decoration: line-through;
                         & {
                           vertical-align: middle;
                           text-align: center;
@@ -194,4 +188,22 @@ body {
       }
     }
   }
+}
+.delete_button{
+  display: inline-block;
+  text-align: center;
+  border: 1px solid #f95a5a;
+  color: #fff;
+  background: rgb(243, 60, 59) linear-gradient(rgb(236, 124, 124), rgb(210, 98, 98));
+  &:hover{
+    background: linear-gradient(#e8aeae, #a22d2d);
+    cursor:pointer;
+  }
+  &:active{
+    background: linear-gradient(#ef6c6c, #e22929 20%, #a00c0c);
+    box-shadow: 0 -1px rgba(255,255,255,.4) inset;
+  }
+}
+.done_toggle{
+  text-decoration: line-through;
 }

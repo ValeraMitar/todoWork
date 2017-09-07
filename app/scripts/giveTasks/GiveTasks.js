@@ -8,23 +8,38 @@ class GiveTasks extends Component {
         super(props);
         this.state = {
             term: 'Task',
-            items: []
+            items: [],
+            count: 0
         };
     }
 
     addItem(event) {
         let itemArray = this.state.items,
-            someTask = document.querySelectorAll('.someTask');
+            count = this.state.count,
+            tasks_block = event.target.closest('div.tasks_block');
         itemArray.push({
             text: this._inputElement.value,
-            key: Date.now()
+            key: `task№`+`${count}`
         });
-        this.setState({items: itemArray});
+        count += 1;
+        this.setState({
+                items: itemArray,
+                count:count
+            });
         this._inputElement.value = '';
         event.preventDefault();
-        console.log(someTask);
-        someTask.forEach((block) => {block.style.display = 'block';})
+        tasks_block.childNodes[1].style.display = 'block';
 
+
+    }
+    delEnterPole(event) {
+        let target = event.target;
+        let task_container = target.closest('div.task_container'),
+            Entr_new_task_container = target.closest('div.Entr_new_task_container'),
+            _confirm = confirm('Are you sure you want to delete this item?');
+        if(_confirm) {
+            task_container.removeChild(Entr_new_task_container);
+        }
     }
 
 
@@ -37,11 +52,11 @@ class GiveTasks extends Component {
                                placeholder="Enter New task">
                         </input>
                         <button type="submit">add</button>
+                        <div className="del_btn" onClick={this.delEnterPole.bind(this)}>X</div>
                     </form>
                 </div>
-                <div>
-                    <TodoItems entr={this.state.items}/>
-                </div>
+                {this.state.items.length > 0 ? <TodoItems entr={this.state.items}/> : null}
+                {/*<TodoItems entr={this.state.items}/>*/}
             </div>
         );
     }
