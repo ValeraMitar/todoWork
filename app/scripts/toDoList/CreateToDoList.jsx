@@ -7,7 +7,7 @@ class CreateToDoList extends Component {
         super();
     }
 
-     createList(item) {
+    createList(item) {
         return <div className="Entr_new_task_container" key={item.key}>{item.task}
         </div>
     }

@@ -8,13 +8,14 @@ class ToDoItems extends Component {
     }
 
     onChange(event) {
+        console.log(event);
         let itemArray = this.props.entr;
-        itemArray.push({
-            text: event.target.value,
-            key: Date.now()
-        });
+        itemArray.find((element)=>{
+            if(element.key === event.target.getAttribute("data-key")) {
+                element.text = event.target.value;
+            }});
         this.setState({items: itemArray});
-
+        console.log(this.state)
     };
 
     crossTheText(event) {
@@ -24,8 +25,8 @@ class ToDoItems extends Component {
         target.classList.toggle('done_toggle');
         done_button.classList.toggle('done_toggle');
         /*if(event.target === 'button'){
-            event.target.classList.toggle('done_toggle');
-        }*/
+         event.target.classList.toggle('done_toggle');
+         }*/
         console.log(done_button);
         event.preventDefault();
     }
@@ -34,7 +35,7 @@ class ToDoItems extends Component {
         let _confirm = confirm('Are you sure you want to delete this item?');
 
         if(_confirm) {
-        //    delete element
+            //    delete element
             let parentUl = event.target.closest('ul'),
                 deleteLi = event.target.closest('li'),
                 someTask = event.target.closest('div.someTask'),
@@ -44,9 +45,9 @@ class ToDoItems extends Component {
                 someTask.style.display = 'none';
             }
             console.log(someTask);
-                parentUl.removeChild(deleteLi);
+            parentUl.removeChild(deleteLi);
         } else {
-        //    nothing doing
+            //    nothing doing
         }
     };
 
@@ -54,12 +55,12 @@ class ToDoItems extends Component {
     createTasks(item) {
         return <li key={item.key}>
             <form onSubmit={this.crossTheText.bind(this)}>
-                <input className="task" title={item.text} value={item.text} onChange={this.onChange.bind(this)}/>
+                <input className="task"data-key={item.key} title={item.text} value={item.text} onChange={this.onChange.bind(this)}/>
                 <div className="forPseudoElement">
                     <div className="delete" onClick={this.deleteLi.bind(this)}>
                         x
                     </div>
-                    <button className="done" type="submit" onMouseDown={this.createTasks.bind(this)}>Done!</button>
+                    <button className="done" type="submit">Done!</button>
                 </div>
             </form>
         </li>

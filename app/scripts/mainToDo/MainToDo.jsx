@@ -2,8 +2,8 @@
 
 import React, {Component} from 'react';
 import text from './textTodo.json';
-import GiveTasks from '../giveTasks/GiveTasks.js';
-import CreateToDoList from '../toDoList/CreateToDoList.js';
+import GiveTasks from '../giveTasks/GiveTasks.jsx';
+import CreateToDoList from '../toDoList/CreateToDoList.jsx';
 
 class MainToDo extends Component {
 

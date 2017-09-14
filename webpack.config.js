@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-    entry:  __dirname + '/app/scripts/main.js',
+    entry:  __dirname + '/app/scripts/main.jsx',
     output: {
         path: __dirname + '/public',
         filename: 'bundle.js'
@@ -14,7 +14,7 @@ module.exports = {
                 loader: 'json-loader'
             },*/
             {
-                test: /\.js$/,
+                test: /\.jsx$/,
                 exclude: /node_modules/,
                 loader: 'babel-loader',
                 query: {

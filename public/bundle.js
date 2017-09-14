@@ -9750,16 +9750,6 @@ module.exports = getHostComponentFromComposite;
 "use strict";
 
 
-/*let greeter = require('./greeter.js');
-document.getElementById('root').appendChild(greeter());*/
-
-/*import React from 'react';
-import {render} from 'react-dom';
-import Greeter from './greeter';
-import '../styles/style.less'
-
-render(<Greeter />, document.getElementById('root'));*/
-
 var _react = __webpack_require__(16);
 
 var _react2 = _interopRequireDefault(_react);
@@ -22408,29 +22398,6 @@ module.exports = ReactDOMInvalidARIAHook;
 
 "use strict";
 
-/*let config = require('./textTodo.json');
-
-module.exports = function () {
-    let greet = document.createElement('div');
-    greet.textContent = config.greetText;
-    return greet;
-};*/
-
-/*
-import React, {Component} from 'react'
-import config from './textTodo.json';
-
-class Greeter extends Component{
-    render() {
-        return (
-            <div>
-            {config.justDoText}
-            </div>
-    );
-    }
-}
-
-export default Greeter*/
 
 Object.defineProperty(exports, "__esModule", {
     value: true
@@ -22649,7 +22616,7 @@ var GiveTasks = function (_Component) {
                 tasks_block = event.target.closest('div.tasks_block');
             itemArray.push({
                 text: this._inputElement.value,
-                key: 'task\u2116' + ('' + count)
+                key: 'task ' + count
             });
             count += 1;
             this.setState({
@@ -22701,7 +22668,7 @@ var GiveTasks = function (_Component) {
                         )
                     )
                 ),
-                this.state.items.length > 0 ? _react2.default.createElement(_ToDoItems2.default, { entr: this.state.items }) : null
+                _react2.default.createElement(_ToDoItems2.default, { entr: this.state.items })
             );
         }
     }]);
@@ -22748,12 +22715,15 @@ var ToDoItems = function (_Component) {
     _createClass(ToDoItems, [{
         key: 'onChange',
         value: function onChange(event) {
+            console.log(event);
             var itemArray = this.props.entr;
-            itemArray.push({
-                text: event.target.value,
-                key: Date.now()
+            itemArray.find(function (element) {
+                if (element.key === event.target.getAttribute("data-key")) {
+                    element.text = event.target.value;
+                }
             });
             this.setState({ items: itemArray });
+            console.log(this.state);
         }
     }, {
         key: 'crossTheText',
@@ -22764,8 +22734,8 @@ var ToDoItems = function (_Component) {
             target.classList.toggle('done_toggle');
             done_button.classList.toggle('done_toggle');
             /*if(event.target === 'button'){
-                event.target.classList.toggle('done_toggle');
-            }*/
+             event.target.classList.toggle('done_toggle');
+             }*/
             console.log(done_button);
             event.preventDefault();
         }
@@ -22799,7 +22769,7 @@ var ToDoItems = function (_Component) {
                 _react2.default.createElement(
                     'form',
                     { onSubmit: this.crossTheText.bind(this) },
-                    _react2.default.createElement('input', { className: 'task', title: item.text, value: item.text, onChange: this.onChange.bind(this) }),
+                    _react2.default.createElement('input', { className: 'task', 'data-key': item.key, title: item.text, value: item.text, onChange: this.onChange.bind(this) }),
                     _react2.default.createElement(
                         'div',
                         { className: 'forPseudoElement' },
@@ -22810,7 +22780,7 @@ var ToDoItems = function (_Component) {
                         ),
                         _react2.default.createElement(
                             'button',
-                            { className: 'done', type: 'submit', onMouseDown: this.createTasks.bind(this) },
+                            { className: 'done', type: 'submit' },
                             'Done!'
                         )
                     )

@@ -1,7 +1,7 @@
 'use strict';
 
 import React, {Component} from 'react';
-import TodoItems from '../todoItems/ToDoItems.js';
+import TodoItems from '../todoItems/ToDoItems.jsx';
 
 class GiveTasks extends Component {
     constructor(props) {
@@ -19,13 +19,13 @@ class GiveTasks extends Component {
             tasks_block = event.target.closest('div.tasks_block');
         itemArray.push({
             text: this._inputElement.value,
-            key: `task№`+`${count}`
+            key: `task ${count}`
         });
         count += 1;
         this.setState({
-                items: itemArray,
-                count:count
-            });
+            items: itemArray,
+            count:count
+        });
         this._inputElement.value = '';
         event.preventDefault();
         tasks_block.childNodes[1].style.display = 'block';
@@ -55,8 +55,8 @@ class GiveTasks extends Component {
                         <div className="del_btn" onClick={this.delEnterPole.bind(this)}>X</div>
                     </form>
                 </div>
-                {this.state.items.length > 0 ? <TodoItems entr={this.state.items}/> : null}
-                {/*<TodoItems entr={this.state.items}/>*/}
+                {/*{this.state.items.length > 0 ? <TodoItems entr={this.state.items}/> : null}*/}
+                <TodoItems entr={this.state.items}/>
             </div>
         );
     }
